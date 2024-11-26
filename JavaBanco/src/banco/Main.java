@@ -16,6 +16,11 @@ public class Main {
 		Conta cc2 = new ContaCorrente(ana);
 		Conta cc4 = new ContaPoupanca(ana);
 		
+		Cliente julio = new Cliente();
+		julio.nome = "Júlio";
+		
+		Conta cc5 = new ContaCorrente(julio);
+		Conta cc6 = new ContaPoupanca(julio);
 
 		cc1.depositar(100);
 		cc2.depositar(250);
@@ -42,7 +47,19 @@ public class Main {
 		System.out.println("-------------------");
 		cc4.imprimirExtrato();
 		
-
+		System.out.println("-------------------");
+		
+		cc5.depositar(140);
+		cc6.depositar(90);
+		
+		cc5.imprimirExtrato();
+		System.out.println("-------------------");
+		cc6.imprimirExtrato();
+		
+		
+		System.out.println();
+		//simulando a quantidade de clientes do Banco
+		System.out.println(Cliente.getQtdClientes());
 	}
 
 }
