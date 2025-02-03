@@ -84,40 +84,68 @@ public class Main extends Investimentos {
 			
 			System.out.println("Digite o valor a ser investido");
 			
-			double valor = scanner.nextDouble();
-			System.out.print(String.format("Valor investido: R$ %.2f", investimentoA(valor)));
+			double valorA = scanner.nextDouble();
+			System.out.print(String.format("Valor investido: R$ %.2f", investimentoA(valorA)));
 		
 			System.out.println("\n\nDigite o número de meses que deseja simular para o dinheiro ficar investido");
 			
-			int meses = scanner.nextInt();
+			int mesesA = scanner.nextInt();
 			
-			if(meses >= 1 && meses <= 6) {
-				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.225;
-			} else if (meses > 6 && meses <= 12) {
-				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.200;
-			} else if (meses > 12 && meses <= 24) {
-				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.175;
-			} else if (meses > 24) {
-				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.150;
+			if(mesesA >= 1 && mesesA <= 6) {
+				impostoRenda = valorA * porcentagemRendimentoMensal * mesesA * 0.225;
+			} else if (mesesA > 6 && mesesA <= 12) {
+				impostoRenda = valorA * porcentagemRendimentoMensal * mesesA * 0.200;
+			} else if (mesesA > 12 && mesesA <= 24) {
+				impostoRenda = valorA * porcentagemRendimentoMensal * mesesA * 0.175;
+			} else if (mesesA > 24) {
+				impostoRenda = valorA * porcentagemRendimentoMensal * mesesA * 0.150;
 			} else {
 				System.out.println("O número de meses investidos deve ser 1 ou mais.");
-				}
+			}
 			
-			double rendimentoMensal = valor * porcentagemRendimentoMensal * meses;
+			
+			
+			double rendimentoMensal = valorA * porcentagemRendimentoMensal * mesesA;
 			double valorMensal = rendimentoMensal - impostoRenda;
-			double saldoBrutoTotal = valor + rendimentoMensal;
-			double saldoLiquidoTotal = valor + valorMensal;
+			double saldoBrutoTotal = valorA + rendimentoMensal;
+			double saldoLiquidoTotal = valorA + valorMensal;
 			
-			System.out.println(String.format("Rendimento bruto ao final de %d mes(es) investido(s): R$ %.2f", meses, rendimentoMensal));
-			System.out.println(String.format("Rendimento líquido ao final de %d mes(es) investido(s): R$ %.2f", meses, valorMensal));
-			System.out.println(String.format("Saldo bruto total ao final de %d mes(es) investido(s): R$ %.2f", meses, saldoBrutoTotal));
-			System.out.println(String.format("Saldo líquido total ao final de %d mes(es) investido(s): R$ %.2f", meses, saldoLiquidoTotal));
+			System.out.println(String.format("Rendimento bruto ao final de %d mes(es) investido(s): R$ %.2f", mesesA, rendimentoMensal));
+			System.out.println(String.format("Rendimento líquido ao final de %d mes(es) investido(s): R$ %.2f", mesesA, valorMensal));
+			System.out.println(String.format("Saldo bruto total ao final de %d mes(es) investido(s): R$ %.2f", mesesA, saldoBrutoTotal));
+			System.out.println(String.format("Saldo líquido total ao final de %d mes(es) investido(s): R$ %.2f", mesesA, saldoLiquidoTotal));
 			break;
+			
 		case 2:
 			
+			System.out.println("Digite o valor a ser investido");
+			
+			double valorB = scanner.nextDouble();
+			System.out.println(String.format("Valor investido: R$ %.2f", investimentoB(valorB)));
+			
+			System.out.println("\n\nDigite o número de meses que deseja simular para o dinheiro ficar investido");
+			
+			int mesesB = scanner.nextInt();
+			
+			if(mesesB > 0) {
+				impostoRenda = 0;
+			} else {
+				System.out.println("O número de meses investidos deve ser 1 ou mais");
+			}
+			
+			double rendimentoMensalB = valorB * 0.005 * mesesB + (0.0017 * valorB);
+			double valorLiquidoMensalB = valorB + rendimentoMensalB;
+			
+			System.out.println(String.format("Rendimento mensal ao final de %d mes(es) investido(s): R$ %.2f", mesesB, rendimentoMensalB));
+			System.out.println(String.format("Saldo líquido total ao final de %d mes(es) investido(s): R$ %.2f", mesesB, valorLiquidoMensalB));
+			break;
+			
+		case 0:
+			System.out.println("Saindo");	
 		}
-		}
+		scanner.close();
 	}
+}
 
 
 	
