@@ -88,7 +88,6 @@ public class Main extends Investimentos {
 			System.out.print(String.format("Valor investido: R$ %.2f", investimentoA(valorA)));
 		
 			System.out.println("\n\nDigite o número de meses que deseja simular para o dinheiro ficar investido");
-			
 			int mesesA = scanner.nextInt();
 			
 			if(mesesA >= 1 && mesesA <= 6) {
@@ -124,7 +123,6 @@ public class Main extends Investimentos {
 			System.out.println(String.format("Valor investido: R$ %.2f", investimentoB(valorB)));
 			
 			System.out.println("\n\nDigite o número de meses que deseja simular para o dinheiro ficar investido");
-			
 			int mesesB = scanner.nextInt();
 			
 			if(mesesB > 0) {
