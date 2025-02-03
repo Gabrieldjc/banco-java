@@ -1,6 +1,8 @@
 package banco;
 
-public class Main {
+import java.util.Scanner;
+
+public class Main extends Investimentos {
 
 	public static void main(String[] args) {
 		
@@ -59,7 +61,65 @@ public class Main {
 		
 		System.out.println();
 		//simulando a quantidade de clientes do Banco
-		System.out.println(Cliente.getQtdClientes());
+		System.out.println("Quantidade de clientes: " + Cliente.getQtdClientes());
+		System.out.println();
+		
+		Main menu = new Main();
+		menu.simulacao();
+	}
+	
+	public void simulacao() {
+	
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Escolha o tipo de investimento: ");
+		System.out.println("1 - InvestimentoA");
+		System.out.println("2 - InvestimentoB");
+		System.out.println("0 - Sair");
+		
+		int opcao = scanner.nextInt();
+		
+		
+		switch(opcao) {
+		case 1:
+			
+			System.out.println("Digite o valor a ser investido");
+			
+			double valor = scanner.nextDouble();
+			System.out.print(String.format("Valor investido: R$ %.2f", investimentoA(valor)));
+		
+			System.out.println("\n\nDigite o número de meses que deseja simular para o dinheiro ficar investido");
+			
+			int meses = scanner.nextInt();
+			
+			if(meses >= 1 && meses <= 6) {
+				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.225;
+			} else if (meses > 6 && meses <= 12) {
+				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.200;
+			} else if (meses > 12 && meses <= 24) {
+				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.175;
+			} else if (meses > 24) {
+				impostoRenda = valor * porcentagemRendimentoMensal * meses * 0.150;
+			} else {
+				System.out.println("O número de meses investidos deve ser 1 ou mais.");
+				}
+			
+			double rendimentoMensal = valor * porcentagemRendimentoMensal * meses;
+			double valorMensal = rendimentoMensal - impostoRenda;
+			double saldoBrutoTotal = valor + rendimentoMensal;
+			double saldoLiquidoTotal = valor + valorMensal;
+			
+			System.out.println(String.format("Rendimento bruto ao final de %d mes(es) investido(s): R$ %.2f", meses, rendimentoMensal));
+			System.out.println(String.format("Rendimento líquido ao final de %d mes(es) investido(s): R$ %.2f", meses, valorMensal));
+			System.out.println(String.format("Saldo bruto total ao final de %d mes(es) investido(s): R$ %.2f", meses, saldoBrutoTotal));
+			System.out.println(String.format("Saldo líquido total ao final de %d mes(es) investido(s): R$ %.2f", meses, saldoLiquidoTotal));
+			break;
+		case 2:
+			
+		}
+		}
 	}
 
-}
+
+	
+
+	
